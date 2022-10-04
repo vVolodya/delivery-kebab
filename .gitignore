@@ -100,13 +100,6 @@ dist
 # vuepress build output
 .vuepress/dist
 
-# vuepress v2.x temp and cache directory
-.temp
-.cache
-
-# Docusaurus cache and generated files
-.docusaurus
-
 # Serverless directories
 .serverless/
 
@@ -119,12 +112,4 @@ dist
 # TernJS port file
 .tern-port
 
-# Stores VSCode versions used for testing VSCode extensions
-.vscode-test
-
-# yarn v2
-.yarn/cache
-.yarn/unplugged
-.yarn/build-state.yml
-.yarn/install-state.gz
-.pnp.*
+sessions
