@@ -26,7 +26,11 @@ module.exports = function Layout({ user, children }) {
               </a>
               <div className="collapse navbar-collapse" id="navbarNav">
                 {user ? (
-                  <span className="navbar-text">Hello {user.name}</span>
+                  <span className="navbar-text">
+                    Hello
+                    {' '}
+                    {user.name}
+                  </span>
                 ) : null}
                 <ul className="navbar-nav">
                   {user ? (
@@ -65,7 +69,7 @@ module.exports = function Layout({ user, children }) {
           integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
           crossOrigin="anonymous"
         />
-        <script src="/js/application.js"/>
+        <script src="/js/application.js" />
       </body>
     </html>
   );
