@@ -23,16 +23,4 @@ const getDistance = async (url) => {
   console.log(getDistance(url));
 
 
-
-app.listen(3005,  async () => {
-    try {
-        // await sequelize.authenticate();
-        // console.log('Соедение с бд установлено');
-        console.log(`Сервак запущен на 3005 порту`);
-    } catch (error) {
-        console.log('Сервак или база легли...', error);
-    }
-});
-
-
 module.exports = getDistance

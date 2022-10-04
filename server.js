@@ -14,6 +14,7 @@ const { SESSION_SECRET } = process.env;
 const indexRouter = require('./src/routes/index');
 const authRouter = require('./src/routes/authentication');
 const productsRouter = require('./src/routes/products');
+const mapRouter = require('./src/routes/map');
 
 const app = express();
 
@@ -46,5 +47,8 @@ app.use(session(sessionConfig));
 app.use('/', indexRouter);
 app.use('/', authRouter);
 app.use('/new-product', productsRouter);
+app.use('/map', mapRouter);
+
+
 
 app.listen(PORT, () => console.log(`Express running → PORT ${PORT}`));
