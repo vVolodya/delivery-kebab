@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({Order}) {
       // define association here
-      this.hasOne(Order, { foreignKey: 'id' })
+      this.hasOne(Order, { foreignKey: 'product_id' })
     }
   }
   Product.init({
     name: DataTypes.STRING,
-    picture_url: DataTypes.STRING,
+    picture_name: DataTypes.STRING,
     price: DataTypes.INTEGER,
     discount: DataTypes.INTEGER,
     adress: DataTypes.STRING,
