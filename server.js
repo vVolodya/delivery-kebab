@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 
 const fileUpload = require('express-fileupload');
+const logger = require('morgan');
 const session = require('express-session');
 const path = require('path');
 
@@ -12,7 +13,7 @@ const { SESSION_SECRET } = process.env;
 
 const indexRouter = require('./src/routes/index');
 const authRouter = require('./src/routes/authentication');
-const ordersRouter = require('./src/routes/orders');
+const productsRouter = require('./src/routes/products');
 
 const app = express();
 
@@ -28,8 +29,7 @@ const sessionConfig = {
   },
 };
 
-
-app.use(fileUpload({
+const fileUploadConfig = {
   limits: {
     fileSize: 10000000,
   },
@@ -40,11 +40,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.resolve('public')));
+app.use(fileUpload(fileUploadConfig));
 app.use(session(sessionConfig));
 
 app.use('/', indexRouter);
 app.use('/', authRouter);
-app.use('/new-order', ordersRouter);
-
+app.use('/new-product', productsRouter);
 
 app.listen(PORT, () => console.log(`Express running → PORT ${PORT}`));
