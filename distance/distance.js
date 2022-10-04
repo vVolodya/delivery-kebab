@@ -10,7 +10,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-let url = 'https://www.rasstoyanie.com/route.json?stops=Москва|Астана'
+
+let url = 'https://www.rasstoyanie.com/route.json?stops=Vladivostok|Tokyo'
 
 const getDistance = async (url) => {
     let response = await fetch(url);
