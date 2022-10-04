@@ -1,10 +1,6 @@
 {
   "development": {
-    "username": "ellina",
-    "password": null,
-    "database": "kebab",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "use_env_variable": "DB_URL"
   },
   "test": {
     "username": "root",
