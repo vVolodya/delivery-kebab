@@ -38,5 +38,9 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20"
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.23.2",
+    "sequelize-cli": "^6.5.1"
   }
 }
