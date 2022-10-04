@@ -1,7 +1,5 @@
 // Дождёмся загрузки API и готовности DOM.
-ymaps.ready(init);
-
-function init() {
+const genreteMap = ymaps.ready(async () => {
   // Создание экземпляра карты и его привязка к контейнеру с
   // заданным id ("map").
   const myMap = new ymaps.Map('map', {
@@ -23,7 +21,13 @@ function init() {
     fromEnabled: false,
     from: `${moscow}, шоссе Энтузиастов, 1`,
     toEnabled: true,
-    to: `${moscow}, шоссе Энтузиастов, 52`,
+    to: `${moscow}, Ленинский проспект, 10`,
+  });
+
+  control.routePanel.options.set({
+    types: {
+      bicycle: true,
+    },
   });
 
   multiRoutePromise.then((multiRoute) => {
@@ -46,4 +50,4 @@ function init() {
   }, (err) => {
     console.log(err);
   });
-}
+});
