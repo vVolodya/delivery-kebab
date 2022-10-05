@@ -15,6 +15,8 @@ const authRouter = require('./src/routes/authentication');
 const productsRouter = require('./src/routes/products');
 const courierProfileRouter = require('./src/routes/courierProfile');
 const mapRouter = require('./src/routes/map');
+const findAddressRouter = require('./src/routes/findAddress');
+
 
 const errorHandlers = require('./src/middlewares/errorHandlers');
 const connectionCheck = require('./db/connectionCheck');
@@ -52,6 +54,8 @@ app.use('/', authRouter);
 app.use('/new-product', productsRouter);
 app.use('/profile', courierProfileRouter);
 app.use('/map', mapRouter);
+app.use('/finddadress', findAddressRouter);
+
 
 app.use(errorHandlers.notFound);
 

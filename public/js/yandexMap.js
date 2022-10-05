@@ -1,5 +1,11 @@
 // Дождёмся загрузки API и готовности DOM.
-const genreteMap = ymaps.ready(async () => {
+ymaps.ready(async () => {
+  const fetchRes = await fetch('/finddadress');
+  const result = await fetchRes.json();
+  console.log(result.addressCustomer);
+
+  const { addressCustomer } = result;
+
   // Создание экземпляра карты и его привязка к контейнеру с
   // заданным id ("map").
   const myMap = new ymaps.Map('map', {
@@ -19,7 +25,7 @@ const genreteMap = ymaps.ready(async () => {
   control.routePanel.state.set({
     type: 'masstransit',
     fromEnabled: false,
-    from: `${moscow}, шоссе Энтузиастов, 1`,
+    from: `${moscow}, ${addressCustomer}`,
     toEnabled: true,
     to: `${moscow}, Ленинский проспект, 10`,
   });
@@ -51,6 +57,3 @@ const genreteMap = ymaps.ready(async () => {
     console.log(err);
   });
 });
-
-
-module.exports = genreteMap;
