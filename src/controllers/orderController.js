@@ -9,7 +9,15 @@ exports.renderYourOrdersPage = async (req, res) => {
   const user = req.session?.userId
     ? await User.findOne({ where: { id: req.session?.userId } })
     : null;
-  renderTemplate(OrderCustomer, { user }, res);
+
+  const products = await Order.findAll({
+    raw: true,
+    where: {
+      user_id: user.id,
+    },
+    include: [{ model: Product }],
+  });
+  renderTemplate(OrderCustomer, { user, products }, res);
 };
 
 exports.addNewOrder = async (req, res) => {
