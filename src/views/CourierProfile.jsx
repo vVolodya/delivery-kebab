@@ -27,11 +27,14 @@ module.exports = function CourierProfile({ user, products }) {
                       <div className="d-flex flex-column justify-content-center align-items-center food-card_title-section">
                         <p className="food-card_title">{product.name}</p>
                         <p>{product.address}</p>
-                        <p className="mb-4">
+                        <p>
                           Created at
                           {' '}
                           {DateTime.fromISO(product.createdAt.toISOString()).toFormat('ff')}
                         </p>
+                        { product.isCompleted
+                          ? <p className="text-success">Bought</p>
+                          : <p className="text-warning">Pending</p> }
                       </div>
                       <div className="food-card_bottom-section">
                         <hr />
