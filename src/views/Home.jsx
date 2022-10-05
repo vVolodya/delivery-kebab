@@ -6,12 +6,16 @@ const Layout = require('./Layout');
 module.exports = function Home({ user, products }) {
   return (
     <Layout user={user}>
-      <h1 className="mx-auto mt-4">Kebab</h1>
+      <script defer src="/js/order.js" />
+
+      <div className="d-flex flex-column justify-conten-center align-items-center w-50 mx-auto mt-5">
+        <h1 className="mx-auto mt-4">All Kebabs</h1>
+      </div>
 
       <section className="main-content">
 
         <div className="container">
-          <div className="row">
+          <div className="row productContainer">
 
             { products.length ? (
               products.map((product) => (
@@ -22,13 +26,14 @@ module.exports = function Home({ user, products }) {
                     </div>
                     <div className="food-card_content">
                       <div className="food-card_title-section">
-                        <p href="#!" className="food-card_title">{product.name}</p>
+                        <p className="food-card_title">{product.name}</p>
+                        <p>{product.address}</p>
                         <p>
                           Courier -
                           {' '}
-                          <a href={`/courier/${product['User.id']}`} className="food-card_author">{product['User.name']}</a>
+                          {product['User.name']}
                         </p>
-                        <p className="mb-4">
+                        <p>
                           Created at
                           {' '}
                           {DateTime.fromISO(product.createdAt.toISOString()).toFormat('ff')}
@@ -45,14 +50,14 @@ module.exports = function Home({ user, products }) {
                               {`${product.price - (product.price * (product.discount / 100))} RUB`}
                             </span>
                           </div>
-                          <button className="btn btn-primary" type="submit">Buy</button>
+                          <button className="btn btn-primary" data-productid={product.id} data-userid={user.id} type="submit">Buy</button>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               ))
-            ) : null }
+            ) : <div className="d-flex justify-content-center w-50 mx-auto"><h2>No kebabs yet :(</h2></div> }
 
           </div>
         </div>

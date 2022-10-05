@@ -13,10 +13,10 @@ const { SESSION_SECRET } = process.env;
 const indexRouter = require('./src/routes/index');
 const authRouter = require('./src/routes/authentication');
 const productsRouter = require('./src/routes/products');
-const courierProfileRouter = require('./src/routes/courierProfile');
+const courierRouter = require('./src/routes/courier');
 const mapRouter = require('./src/routes/map');
 const findAddressRouter = require('./src/routes/findAddress');
-
+const orderRouter = require('./src/routes/orderUser');
 
 const errorHandlers = require('./src/middlewares/errorHandlers');
 const connectionCheck = require('./db/connectionCheck');
@@ -51,10 +51,11 @@ app.use(session(sessionConfig));
 
 app.use('/', indexRouter);
 app.use('/', authRouter);
-app.use('/new-product', productsRouter);
-app.use('/profile', courierProfileRouter);
+app.use('/', courierRouter);
+app.use('/product', productsRouter);
 app.use('/map', mapRouter);
-app.use('/finddadress', findAddressRouter);
+
+app.use('/orders', orderRouter);
 
 
 app.use(errorHandlers.notFound);
