@@ -6,19 +6,22 @@ const Layout = require('./Layout');
 module.exports = function Home({ user, products }) {
   return (
     <Layout user={user}>
-
+      <script defer src='/js/order.js'></script>
+      
       <div className="d-flex flex-column justify-conten-center align-items-center w-50 mx-auto mt-5">
         <h1 className="mx-auto mt-4">All Kebabs</h1>
       </div>
+      
+      <h1 className="mx-auto mt-4">Kebab</h1>
 
       <section className="main-content">
 
         <div className="container">
-          <div className="row">
+          <div className="row productContainer">
 
             { products.length ? (
               products.map((product) => (
-                <div key={product.id} className="col-sm-6 col-md-6 col-lg-4">
+                <div key={product.id}  className="col-sm-6 col-md-6 col-lg-4">
                   <div className="food-card">
                     <div className="food-card_img">
                       <img src={`/uploads/${product.picture_name}`} alt="Product" />
@@ -49,7 +52,7 @@ module.exports = function Home({ user, products }) {
                               {`${product.price - (product.price * (product.discount / 100))} RUB`}
                             </span>
                           </div>
-                          <button className="btn btn-primary" type="submit">Buy</button>
+                          <button className="btn btn-primary" data-productid={product.id} data-userid={user.id} type="submit">Buy</button>
                         </div>
                       </div>
                     </div>
