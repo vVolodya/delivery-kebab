@@ -10,6 +10,7 @@ module.exports = function Layout({ user, children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Delivery-Kebab</title>
         <link rel="stylesheet" href="/css/normalize.css" />
+        <link rel="icon" type="image/png" href="css/favicon.ico" />
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
           rel="stylesheet"
@@ -24,7 +25,10 @@ module.exports = function Layout({ user, children }) {
           <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <div className="container-fluid">
               <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul className="navbar-nav">
+                <ul className="navbar-nav d-flex flex-col align-items-center">
+                  <a className="navbar-brand" href="/">
+                    <img src="/uploads/Logo.png" width="90" height="90" alt="Logo" />
+                  </a>
                   { user ? (
                     user.role === 'courier' ? (
                       <>
@@ -32,7 +36,7 @@ module.exports = function Layout({ user, children }) {
                           <a className="nav-link" aria-current="page" href="/">Home</a>
                         </li>
                         <li className="nav-item h4">
-                          <a className="nav-link" aria-current="page" href="/new-product">New Product</a>
+                          <a className="nav-link" aria-current="page" href="/product/new">New Kebab</a>
                         </li>
                         <li className="nav-item h4">
                           <a className="nav-link" aria-current="page" href="/profile">Profile</a>
