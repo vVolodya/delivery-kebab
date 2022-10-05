@@ -6,8 +6,8 @@ const { User, Product } = require('../../db/models');
 const CourierProfile = require('../views/CourierProfile');
 
 exports.renderProfile = async (req, res) => {
-  const user = req.session?.userId
-    ? await User.findOne({ where: { id: req.session?.userId } })
+  const user = req.session.userId
+    ? await User.findOne({ where: { id: req.session.userId } })
     : null;
 
   const products = await Product.findAll({

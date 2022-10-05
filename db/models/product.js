@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     discount: DataTypes.INTEGER,
     address: DataTypes.STRING,
     courier_id: DataTypes.INTEGER,
+    isCompleted: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'Product',

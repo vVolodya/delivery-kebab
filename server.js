@@ -13,7 +13,7 @@ const { SESSION_SECRET } = process.env;
 const indexRouter = require('./src/routes/index');
 const authRouter = require('./src/routes/authentication');
 const productsRouter = require('./src/routes/products');
-const courierProfileRouter = require('./src/routes/courierProfile');
+const courierRouter = require('./src/routes/courier');
 const mapRouter = require('./src/routes/map');
 const orderRouter = require('./src/routes/orderUser');
 
@@ -50,8 +50,8 @@ app.use(session(sessionConfig));
 
 app.use('/', indexRouter);
 app.use('/', authRouter);
-app.use('/new-product', productsRouter);
-app.use('/profile', courierProfileRouter);
+app.use('/', courierRouter);
+app.use('/product', productsRouter);
 app.use('/map', mapRouter);
 app.use('/orders', orderRouter);
 

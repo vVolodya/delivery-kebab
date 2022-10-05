@@ -7,6 +7,11 @@ module.exports = function Home({ user, products }) {
   return (
     <Layout user={user}>
       <script defer src='/js/order.js'></script>
+      
+      <div className="d-flex flex-column justify-conten-center align-items-center w-50 mx-auto mt-5">
+        <h1 className="mx-auto mt-4">All Kebabs</h1>
+      </div>
+      
       <h1 className="mx-auto mt-4">Kebab</h1>
 
       <section className="main-content">
@@ -23,11 +28,12 @@ module.exports = function Home({ user, products }) {
                     </div>
                     <div className="food-card_content">
                       <div className="food-card_title-section">
-                        <p href="#!" className="food-card_title">{product.name}</p>
+                        <p className="food-card_title">{product.name}</p>
+                        <p>{product.address}</p>
                         <p>
                           Courier -
                           {' '}
-                          <a href={`/courier/${product['User.id']}`} className="food-card_author">{product['User.name']}</a>
+                          {product['User.name']}
                         </p>
                         <p className="mb-4">
                           Created at
@@ -53,7 +59,7 @@ module.exports = function Home({ user, products }) {
                   </div>
                 </div>
               ))
-            ) : null }
+            ) : <div className="d-flex justify-content-center w-50 mx-auto"><h2>No kebabs yet :(</h2></div> }
 
           </div>
         </div>
