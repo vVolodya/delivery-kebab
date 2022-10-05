@@ -1,4 +1,4 @@
-const { User } = require('../../db/models');
+const { User, Product } = require('../../db/models');
 
 exports.findAddress = async (req, res) => {
   console.log('req.session.userId', req.session.userId);
@@ -7,5 +7,13 @@ exports.findAddress = async (req, res) => {
   const addressCustomer = customer.address;
   console.log('addressCustomer', addressCustomer);
 
-  res.send({ addressCustomer });
+  const product = await Product.findAll({ raw: true });
+
+  const arrDataProduct = [];
+  product.forEach((el) => {
+    arrDataProduct.push({ id: el.id, address: el.address });
+  });
+  console.log(arrDataProduct);
+
+  res.send({ addressCustomer, product: arrDataProduct });
 };
