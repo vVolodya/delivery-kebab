@@ -1,17 +1,20 @@
 const { renderTemplate } = require('../middlewares/helpers');
 
-const { Product } = require('../../db/models');
+const { User, Product } = require('../../db/models');
 
 const NewProduct = require('../views/NewProduct');
 
-exports.renderNewProductPage = (req, res) => {
-  renderTemplate(NewProduct, null, res);
+exports.renderNewProductPage = async (req, res) => {
+  const user = req.session.userId
+    ? await User.findOne({ where: { id: req.session.userId } })
+    : null;
+  renderTemplate(NewProduct, { user }, res);
 };
 
 exports.addNewProduct = async (req, res) => {
   // Getting courierID
   const { userId } = req.session;
-  // Adding Image to Public folder
+  // Adding Image to Uploads folder
   const { image } = req.files;
   if (!image) {
     res.sendStatus(400);
@@ -33,5 +36,6 @@ exports.addNewProduct = async (req, res) => {
     address,
     courier_id: userId,
   });
-  res.json(newProduct);
+  // Redirect to Home page
+  res.redirect('/');
 };
