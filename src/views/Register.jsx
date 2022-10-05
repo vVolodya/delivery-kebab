@@ -2,10 +2,18 @@ const React = require('react');
 
 const Layout = require('./Layout');
 
-module.exports = function Register() {
+module.exports = function Register({ messages }) {
+  console.log(messages)
   return (
     <Layout>
       <h1>Register</h1>
+      {messages
+        ? (
+          <div className="alert alert-danger" role="alert">
+            {messages.split(',').map((message) => <span className="error-message">{message}</span>)}
+          </div>
+        )
+        : null}
       <form method="POST" action="/register" encType="multipart/form-data" className="w-25 p-3">
 
         <div className="form-check">

@@ -15,12 +15,36 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(Product, { foreignKey: 'courier_id' });
     }
   }
+  // Прописываю правила (sequelize validation attributes)
+  // Имя не может быть пустым
+  // Имейл должен соответствовать правилам секвалайза
+  // Логика пароля тут не сработает, так как bctypt хеширует даже пустое поле
+  // sequelize создает error => message увижу в error
   User.init({
-    name: DataTypes.STRING,
-    password: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'You must provide a name.',
+        },
+      },
+    },
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true,
+      },
+    },
     role: DataTypes.STRING,
     address: DataTypes.STRING,
-    email: DataTypes.TEXT,
+    email: {
+      type: DataTypes.TEXT,
+      validate: {
+        isEmail: {
+          msg: 'You must provide a valid email.',
+        },
+      },
+    },
   }, {
     sequelize,
     modelName: 'User',
