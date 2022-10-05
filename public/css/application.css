@@ -189,3 +189,7 @@ a {
     object-fit: cover;
   }
 }
+
+.error-message {
+  display: block;
+}
