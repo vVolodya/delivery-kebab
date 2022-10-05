@@ -6,13 +6,11 @@ const Layout = require('./Layout');
 module.exports = function Home({ user, products }) {
   return (
     <Layout user={user}>
-      <script defer src='/js/order.js'></script>
-      
+      <script defer src="/js/order.js" />
+
       <div className="d-flex flex-column justify-conten-center align-items-center w-50 mx-auto mt-5">
         <h1 className="mx-auto mt-4">All Kebabs</h1>
       </div>
-      
-      <h1 className="mx-auto mt-4">Kebab</h1>
 
       <section className="main-content">
 
@@ -21,7 +19,7 @@ module.exports = function Home({ user, products }) {
 
             { products.length ? (
               products.map((product) => (
-                <div key={product.id}  className="col-sm-6 col-md-6 col-lg-4">
+                <div key={product.id} className="col-sm-6 col-md-6 col-lg-4">
                   <div className="food-card">
                     <div className="food-card_img">
                       <img src={`/uploads/${product.picture_name}`} alt="Product" />
@@ -35,7 +33,7 @@ module.exports = function Home({ user, products }) {
                           {' '}
                           {product['User.name']}
                         </p>
-                        <p className="mb-4">
+                        <p>
                           Created at
                           {' '}
                           {DateTime.fromISO(product.createdAt.toISOString()).toFormat('ff')}

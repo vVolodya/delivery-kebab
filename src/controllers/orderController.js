@@ -14,9 +14,16 @@ exports.renderYourOrdersPage = async (req, res) => {
 
 exports.addNewOrder = async (req, res) => {
   const { userid, productid } = req.body;
+  await Product.update({
+    isCompleted: true,
+  }, {
+    where: { id: productid },
+    returning: true,
+    plain: true,
+  });
   await Order.create({
     product_id: productid,
     user_id: userid,
   });
-  res.status(200).end()
+  res.status(200).end();
 };

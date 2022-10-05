@@ -10,6 +10,9 @@ exports.findUserRenderHome = async (req, res) => {
     : null;
 
   const products = await Product.findAll({
+    where: {
+      isCompleted: false,
+    },
     raw: true,
     include: [{ model: User }],
   });
