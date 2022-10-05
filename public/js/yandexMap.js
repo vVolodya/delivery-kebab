@@ -9,11 +9,10 @@ async function getAllDistance() {
 
   arrProduct.map((el) => {
     const locationCiruer = el.address;
-    const id = el.id
+    const { id } = el;
 
     getDistance(addressCustomer, locationCiruer, id);
   });
-  // console.log(distance, time, 'oooooooooueeeeeeeeeee');
 
   function getDistance(addressCustomer, locationCiruer, id) {
     ymaps.ready(() => {
@@ -45,13 +44,13 @@ async function getAllDistance() {
 
       control.routePanel.options.set({
         types: {
-          bicycle: true,
+          masstransit: true,
         },
       });
 
       multiRoutePromise.then((multiRoute) => {
       // Подписка на событие обновления мультимаршрута.
-        multiRoute.model.events.add('requestsuccess', () => {
+        multiRoute.model.events.add('requestsuccess', async () => {
         // Получение ссылки на активный маршрут.
           const activeRoute = multiRoute.getActiveRoute();
           // Когда панель добавляется на карту, она
@@ -70,6 +69,14 @@ async function getAllDistance() {
             const resultDistance = { id, distance, time };
             console.log(resultDistance);
             // document.cookie = `${id} = ${distance}`;
+
+            await fetch('/map', {
+              method: 'POST',
+              headers: {
+                'Content-type': 'application/json',
+              },
+              body: JSON.stringify(resultDistance),
+            });
           }
         });
       }, (err) => {
