@@ -2,11 +2,11 @@ const React = require('react');
 
 const Layout = require('./Layout');
 
-module.exports = function NewOrder() {
+module.exports = function NewOrder({ user }) {
   return (
-    <Layout>
+    <Layout user={user}>
 
-      <h2>New Order Page</h2>
+      <h2>New Product Page</h2>
 
       <form action="/new-product" method="POST" encType="multipart/form-data" className="w-25 p-3">
 
@@ -43,7 +43,7 @@ module.exports = function NewOrder() {
           <input name="image" className="form-control" type="file" id="formFile" />
         </div>
 
-        <button className="btn btn-primary" type="submit">Button</button>
+        <button className="btn btn-primary" type="submit">Add</button>
       </form>
 
     </Layout>

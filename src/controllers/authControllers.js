@@ -12,26 +12,21 @@ exports.renderRegister = (req, res) => {
 };
 
 exports.userRegister = async (req, res) => {
-  try {
-    const {
-      name, email, password, role, address,
-    } = req.body;
-    const hash = await bcrypt.hash(password, 10);
-    const user = await User.create({
-      name,
-      email,
-      password: hash,
-      role,
-      address,
-    });
-    req.session.userId = user.id;
-    req.session.save(() => {
-      res.redirect('/');
-    });
-  } catch (error) {
-    console.log('ERROR', error);
-    res.status(500).json({ error: error.message });
-  }
+  const {
+    name, email, password, role, address,
+  } = req.body;
+  const hash = await bcrypt.hash(password, 10);
+  const user = await User.create({
+    name,
+    email,
+    password: hash,
+    role,
+    address,
+  });
+  req.session.userId = user.id;
+  req.session.save(() => {
+    res.redirect('/');
+  });
 };
 
 exports.renderLogin = (req, res) => {
@@ -39,29 +34,20 @@ exports.renderLogin = (req, res) => {
 };
 
 exports.userLogin = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    const user = await User.findOne({ where: { email } });
-    const passCheck = await bcrypt.compare(password, user.password);
-    if (passCheck) {
-      req.session.userId = user.id;
-      res.redirect('/');
-    } else {
-      res.redirect('/login?error=notfound');
-    }
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: error.message });
+  const { email, password } = req.body;
+  const user = await User.findOne({ where: { email } });
+  const passCheck = await bcrypt.compare(password, user.password);
+  if (passCheck) {
+    req.session.userId = user.id;
+    res.redirect('/');
+  } else {
+    res.redirect('/login?error=notfound');
   }
 };
 
 exports.userLogout = async (req, res) => {
-  try {
-    req.session.destroy(() => {
-      res.clearCookie('flashcards');
-      res.redirect('/');
-    });
-  } catch (error) {
-    res.send('Error=====>', error);
-  }
+  req.session.destroy(() => {
+    res.clearCookie('flashcards');
+    res.redirect('/');
+  });
 };
