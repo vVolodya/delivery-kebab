@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 const React = require('react');
 
 module.exports = function Layout({ user, children }) {
@@ -7,7 +8,7 @@ module.exports = function Layout({ user, children }) {
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Kebab</title>
+        <title>Delivery-Kebab</title>
         <link rel="stylesheet" href="/css/normalize.css" />
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
@@ -19,38 +20,48 @@ module.exports = function Layout({ user, children }) {
       </head>
       <body>
         <header>
-          <nav className="navbar navbar-expand-lg bg-light">
+
+          <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <div className="container-fluid">
-              <a className="navbar-brand" href="/">
-                Kebab
-              </a>
-              <div className="collapse navbar-collapse" id="navbarNav">
-                {user ? (
-                  <span className="navbar-text">
-                    Hello
-                    {' '}
-                    {user.name}
-                  </span>
-                ) : null}
+              <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul className="navbar-nav">
-                  {user ? (
-                    <li className="nav-item">
-                      <a
-                        className="nav-link active"
-                        aria-current="page"
-                        href="/logout"
-                      >
-                        Logout
-                      </a>
-                    </li>
+                  { user ? (
+                    user.role === 'courier' ? (
+                      <>
+                        <li className="nav-item h4">
+                          <a className="nav-link" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li className="nav-item h4">
+                          <a className="nav-link" aria-current="page" href="/new-product">New Product</a>
+                        </li>
+                        <li className="nav-item h4">
+                          <a className="nav-link" aria-current="page" href="/profile">Profile</a>
+                        </li>
+                        <li className="nav-item h4">
+                          <a className="nav-link" aria-current="page" href="/logout">Logout</a>
+                        </li>
+                      </>
+                    ) : (
+                      <>
+                        <li className="nav-item h4">
+                          <a className="nav-link" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li className="nav-item h4">
+                          <a className="nav-link" aria-current="page" href="/orders">Your orders</a>
+                        </li>
+                        <li className="nav-item h4">
+                          <a className="nav-link" aria-current="page" href="/logout">Logout</a>
+                        </li>
+                      </>
+                    )
                   ) : (
                     <>
-                      <li className="nav-item">
+                      <li className="nav-item h4">
                         <a className="nav-link" href="/register">
                           Register
                         </a>
                       </li>
-                      <li className="nav-item">
+                      <li className="nav-item h4">
                         <a className="nav-link" href="/login">
                           Login
                         </a>
@@ -61,10 +72,10 @@ module.exports = function Layout({ user, children }) {
               </div>
             </div>
           </nav>
+
         </header>
         <main>{children}</main>
         <script
-          defer
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
           crossOrigin="anonymous"

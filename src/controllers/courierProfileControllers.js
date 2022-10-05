@@ -1,18 +1,21 @@
+const createError = require('http-errors');
 const { renderTemplate } = require('../middlewares/helpers');
 
 const { User, Product } = require('../../db/models');
 
-const Home = require('../views/Home');
+const CourierProfile = require('../views/CourierProfile');
 
-exports.findUserRenderHome = async (req, res) => {
+exports.renderProfile = async (req, res) => {
   const user = req.session?.userId
     ? await User.findOne({ where: { id: req.session?.userId } })
     : null;
 
   const products = await Product.findAll({
     raw: true,
-    include: [{ model: User }],
+    where: {
+      courier_id: user.id,
+    },
   });
 
-  renderTemplate(Home, { user, products }, res);
+  renderTemplate(CourierProfile, { user, products }, res);
 };

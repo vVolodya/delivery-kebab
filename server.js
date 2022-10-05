@@ -1,11 +1,10 @@
 require('dotenv').config();
-const express = require('express');
 
+const express = require('express');
 const fileUpload = require('express-fileupload');
 const logger = require('morgan');
 const session = require('express-session');
 const path = require('path');
-
 const FileStore = require('session-file-store')(session);
 
 const PORT = process.env.PORT ?? 7777;
@@ -14,7 +13,11 @@ const { SESSION_SECRET } = process.env;
 const indexRouter = require('./src/routes/index');
 const authRouter = require('./src/routes/authentication');
 const productsRouter = require('./src/routes/products');
+const courierProfileRouter = require('./src/routes/courierProfile');
 const mapRouter = require('./src/routes/map');
+
+const errorHandlers = require('./src/middlewares/errorHandlers');
+const connectionCheck = require('./db/connectionCheck');
 
 const app = express();
 
@@ -47,8 +50,18 @@ app.use(session(sessionConfig));
 app.use('/', indexRouter);
 app.use('/', authRouter);
 app.use('/new-product', productsRouter);
+app.use('/profile', courierProfileRouter);
 app.use('/map', mapRouter);
 
+app.use(errorHandlers.notFound);
 
+if (process.env.NODE_ENV === 'development') {
+  app.use(errorHandlers.developmentErrors);
+}
 
-app.listen(PORT, () => console.log(`Express running → PORT ${PORT}`));
+app.use(errorHandlers.productionErrors);
+
+app.listen(PORT, () => {
+  connectionCheck();
+  console.log(`Express running → PORT ${PORT}`);
+});
