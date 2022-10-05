@@ -81,18 +81,28 @@ exports.userRegister = async (req, res) => {
 };
 
 exports.renderLogin = (req, res) => {
-  renderTemplate(Login, {}, res);
+  const { messages } = req.query;
+  renderTemplate(Login, { messages }, res);
 };
 
 exports.userLogin = async (req, res) => {
-  const { email, password } = req.body;
-  const user = await User.findOne({ where: { email } });
-  const passCheck = await bcrypt.compare(password, user.password);
-  if (passCheck) {
-    req.session.userId = user.id;
-    res.redirect('/');
-  } else {
-    res.redirect('/login?error=notfound');
+  // Буду выводить ошибку, что юзер не найден (из-за вопроса
+  // безопасности не вдаюсь в подробности, что было введено неверно)
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ where: { email } });
+    if (!user) {
+      throw new Error('No user found for that email and password.');
+    }
+    const passCheck = await bcrypt.compare(password, user.password);
+    if (passCheck) {
+      req.session.userId = user.id;
+      res.redirect('/');
+    } else {
+      throw new Error('No user found for that email and password.');
+    }
+  } catch (error) {
+    res.redirect(`/login?messages=${error.message}`);
   }
 };
 
