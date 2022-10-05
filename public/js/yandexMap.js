@@ -51,3 +51,6 @@ const genreteMap = ymaps.ready(async () => {
     console.log(err);
   });
 });
+
+
+module.exports = genreteMap;
