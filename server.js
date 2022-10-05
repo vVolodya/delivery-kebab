@@ -15,6 +15,7 @@ const authRouter = require('./src/routes/authentication');
 const productsRouter = require('./src/routes/products');
 const courierRouter = require('./src/routes/courier');
 const mapRouter = require('./src/routes/map');
+const findAddressRouter = require('./src/routes/findAddress');
 const orderRouter = require('./src/routes/orderUser');
 
 const errorHandlers = require('./src/middlewares/errorHandlers');
@@ -53,7 +54,9 @@ app.use('/', authRouter);
 app.use('/', courierRouter);
 app.use('/product', productsRouter);
 app.use('/map', mapRouter);
+
 app.use('/orders', orderRouter);
+
 
 app.use(errorHandlers.notFound);
 

@@ -85,6 +85,8 @@ module.exports = function Layout({ user, children }) {
           crossOrigin="anonymous"
         />
         <script src="/js/application.js" />
+        <script defer src="https://api-maps.yandex.ru/2.1/?apikey=16ae44fe-6ff1-4dee-84fe-86c6dbed24d3&lang=ru_RU" type="text/javascript" />
+        <script defer src="/js/yandexMap.js" />
       </body>
     </html>
   );
