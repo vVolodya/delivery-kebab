@@ -1,12 +1,20 @@
 async function getAllDistance() {
   const fetchRes = await fetch('/finddadress');
   const result = await fetchRes.json();
-  console.log('aaaaallll dataaaaaa', result);
-  console.log('Адрес клиента: ', result.addressCustomer);
 
   const { addressCustomer } = result;
-  // const
-  getDistance();
+  const arrLocatoinCuriser = []; 
+  const arrProduct = result.product;
+
+  arrProduct.map((el) => {
+    locationCiruer = el.address;
+
+    getDistance(addressCustomer, locationCiruer);
+
+
+  });
+
+
 }
 
 getAllDistance();
@@ -36,7 +44,7 @@ function getDistance(addressCustomer, locationCiruer) {
       fromEnabled: false,
       from: `${moscow}, ${addressCustomer}`,
       toEnabled: true,
-      to: `${moscow}, Ленинский проспект, 10`,
+      to: `${moscow}, ${locationCiruer}`,
     });
 
     control.routePanel.options.set({
@@ -58,7 +66,7 @@ function getDistance(addressCustomer, locationCiruer) {
         // что маршрут не пустой.
         if (activeRoute) {
         // Вывод информации об активном маршруте.
-          console.log(`Длина: ${activeRoute.properties.get('distance').text}`);
+          console.log(`Длина маршурта от ${addressCustomer} до ${locationCiruer}: ${activeRoute.properties.get('distance').text}`);
           console.log(`Время прохождения: ${activeRoute.properties.get('duration').text}`);
         }
       });
