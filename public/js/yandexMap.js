@@ -7,10 +7,11 @@ async function getAllDistance() {
   const { addressCustomer } = result;
   const arrProduct = result.product;
 
-  arrProduct.map((el) => {
+  const arrToSend = [];
+
+  arrProduct.forEach((el) => {
     const locationCiruer = el.address;
     const { id } = el;
-
     getDistance(addressCustomer, locationCiruer, id);
   });
 
@@ -67,16 +68,8 @@ async function getAllDistance() {
             const distance = activeRoute.properties.get('distance');
             const time = activeRoute.properties.get('duration');
             const resultDistance = { id, distance, time };
-            console.log(resultDistance);
+            arrToSend.push(resultDistance);
             // document.cookie = `${id} = ${distance}`;
-
-            await fetch('/map', {
-              method: 'POST',
-              headers: {
-                'Content-type': 'application/json',
-              },
-              body: JSON.stringify(resultDistance),
-            });
           }
         });
       }, (err) => {
@@ -84,6 +77,14 @@ async function getAllDistance() {
       });
     });
   }
+
+  await fetch('/map', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify({ list: arrToSend }),
+  });
 }
 
 getAllDistance();
