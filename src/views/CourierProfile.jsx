@@ -47,8 +47,13 @@ module.exports = function CourierProfile({ user, products }) {
                               {`${product.price - (product.price * (product.discount / 100))} RUB`}
                             </span>
                           </div>
-                          <a href={`/product/${product.id}`} className="edit-link text-reset text-decoration-none btn btn-primary">Edit</a>
-                          <button className="deleteProductBtn btn btn-danger" type="submit">Delete</button>
+                          { product.isCompleted ? null
+                            : (
+                              <>
+                                <a href={`/product/${product.id}`} className="edit-link text-reset text-decoration-none btn btn-primary">Edit</a>
+                                <button className="deleteProductBtn btn btn-danger" type="submit">Delete</button>
+                              </>
+                            )}
                         </div>
                       </div>
                     </div>
@@ -60,6 +65,7 @@ module.exports = function CourierProfile({ user, products }) {
           </div>
         </div>
       </section>
+      <script src="/js/deleteProduct.js" />
     </Layout>
   );
 };

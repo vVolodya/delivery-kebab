@@ -8,4 +8,8 @@ router.route('/')
   .get(catchErrors(orderController.renderYourOrdersPage))
   .post(catchErrors(orderController.addNewOrder));
 
+router.route('/:id')
+  .post(catchErrors(orderController.removeOrder))
+  .delete(catchErrors(orderController.deleteOrderAndProduct));
+
 module.exports = router;

@@ -109,6 +109,6 @@ exports.userLogin = async (req, res) => {
 exports.userLogout = async (req, res) => {
   req.session.destroy(() => {
     res.clearCookie('kebab');
-    res.redirect('/');
+    res.redirect('/login');
   });
 };

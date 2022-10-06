@@ -6,7 +6,7 @@ const Layout = require('./Layout');
 module.exports = function Home({ user, products }) {
   return (
     <Layout user={user}>
-      <script defer src="/js/order.js" />
+      <script defer src="/js/addOrder.js" />
 
       <div className="d-flex flex-column justify-conten-center align-items-center w-50 mx-auto mt-5">
         <h1 className="mx-auto mt-4">All Kebabs</h1>
@@ -27,7 +27,11 @@ module.exports = function Home({ user, products }) {
                     <div className="food-card_content">
                       <div className="food-card_title-section">
                         <p className="food-card_title">{product.name}</p>
-                        <p>{product.address}</p>
+                        <p>
+                          Address -
+                          {' '}
+                          {product.address}
+                        </p>
                         <p>
                           Courier -
                           {' '}
@@ -50,7 +54,9 @@ module.exports = function Home({ user, products }) {
                               {`${product.price - (product.price * (product.discount / 100))} RUB`}
                             </span>
                           </div>
-                          <button className="btn btn-primary" data-productid={product.id} data-userid={user.id} type="submit">Buy</button>
+                          { user.role === 'customer'
+                            ? <button className="btn btn-primary" data-productid={product.id} data-userid={user.id} type="submit">Buy</button>
+                            : null }
                         </div>
                       </div>
                     </div>
