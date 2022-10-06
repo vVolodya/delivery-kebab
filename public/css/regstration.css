@@ -1,0 +1,19 @@
+.pic_reg {
+    opacity: 0;
+    display: flex;
+    justify-content: end;
+    animation-duration: 14s; /* Скорость проигрывания - время завершения одного цикла */
+    animation-name: slidein;
+    animation-iteration-count: 1; /* Число итераций. В данном случае - бесконечно */
+    animation-delay: 0s; /* Стоит 2 сек. после загрузки */
+  }
+  
+  @keyframes slidein {  
+     0%  { 
+        /* width: 150%; */
+           opacity: 1; } /* Начальная точка */
+    
+     100% {
+         /* width: 0%; */
+            opacity: 0; } /* Конечная точка */
+  }

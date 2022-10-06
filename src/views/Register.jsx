@@ -3,9 +3,11 @@ const React = require('react');
 const Layout = require('./Layout');
 
 module.exports = function Register({ messages }) {
-  console.log(messages)
+  console.log(messages);
   return (
     <Layout>
+      <link rel="stylesheet" href="/css/regstration.css" />
+
       <h1>Register</h1>
       {messages
         ? (
@@ -58,6 +60,13 @@ module.exports = function Register({ messages }) {
           <input type="text" name="address" className="form-control" placeholder="Address" aria-label="Address" aria-describedby="register-address" />
         </div>
         <button type="submit" className="btn btn-primary">Register</button>
+        <div className="pic_reg">
+          <img
+            src="https://www.picgifs.com/source/includes/functions/download_image.php?file=graphics/c/chickens/graphics-chickens-328697.gif"
+            style={{ width: '300px', height: '240px' }}
+            alt="Soldatkin"
+          />
+        </div>
       </form>
     </Layout>
   );
