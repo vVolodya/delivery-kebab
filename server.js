@@ -17,6 +17,7 @@ const courierRouter = require('./src/routes/courier');
 const mapRouter = require('./src/routes/map');
 const findAddressRouter = require('./src/routes/findAddress');
 const orderRouter = require('./src/routes/orderUser');
+const orderInfoRouter = require('./src/routes/orderInfo');
 
 const errorHandlers = require('./src/middlewares/errorHandlers');
 const connectionCheck = require('./db/connectionCheck');
@@ -55,8 +56,8 @@ app.use('/', courierRouter);
 app.use('/product', productsRouter);
 app.use('/map', mapRouter);
 app.use('/orders', orderRouter);
+app.use('/order', orderInfoRouter);
 app.use('/finddadress', findAddressRouter);
-
 
 app.use(errorHandlers.notFound);
 
