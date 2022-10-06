@@ -11,6 +11,10 @@ exports.renderYourOrdersPage = async (req, res) => {
     ? await User.findOne({ where: { id: req.session?.userId } })
     : null;
 
+  if (!user || user.role === 'courier') {
+    return res.redirect('/');
+  }
+
   const orders = await Order.findAll({
     raw: true,
     where: {

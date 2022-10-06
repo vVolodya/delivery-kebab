@@ -54,7 +54,7 @@ module.exports = function Home({ user, products }) {
                               {`${product.price - (product.price * (product.discount / 100))} RUB`}
                             </span>
                           </div>
-                          { user.role === 'customer'
+                          { (user && user.role) === 'customer'
                             ? <button className="btn btn-primary" data-productid={product.id} data-userid={user.id} type="submit">Buy</button>
                             : null }
                         </div>
