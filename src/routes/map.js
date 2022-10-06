@@ -5,8 +5,7 @@ const { renderMap } = require('../controllers/mapContollers');
 router.get('/', renderMap);
 
 router.post('/', (req, res) => {
-  const result = req.body;
-  console.log(result);
+  const { list } = req.body;
   res.send({ data: 'done' });
 });
 
