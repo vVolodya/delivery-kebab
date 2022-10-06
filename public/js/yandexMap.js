@@ -60,8 +60,6 @@ async function getAllDistance() {
             const time = activeRoute.properties.get('duration');
             const resultDistance = { distance, time };
 
-            console.log(resultDistance);
-
             await fetch('/map', {
               method: 'POST',
               headers: {
