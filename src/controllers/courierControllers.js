@@ -10,6 +10,10 @@ exports.renderProfile = async (req, res) => {
     ? await User.findOne({ where: { id: req.session.userId } })
     : null;
 
+  if (!user || user.role === 'customer') {
+    return res.redirect('/');
+  }
+
   const products = await Product.findAll({
     raw: true,
     where: {
