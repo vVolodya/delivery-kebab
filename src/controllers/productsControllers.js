@@ -10,6 +10,9 @@ exports.renderNewProductPage = async (req, res) => {
   const user = req.session.userId
     ? await User.findOne({ where: { id: req.session.userId } })
     : null;
+  if (!user || user.role === 'customer') {
+    return res.redirect('/');
+  }
   renderTemplate(NewProduct, { user }, res);
 };
 
