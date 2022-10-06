@@ -5,6 +5,11 @@ body {
   font-family: "roboto", sans-serif;
 }
 
+.addInfoContainer {
+  width: 340px;
+  margin-left: 50px;
+}
+
 .main-content {
   padding-top: 100px;
   padding-bottom: 100px;
@@ -140,7 +145,7 @@ a {
   font-size: 13px;
 }
 
-.food-card .food-card_content .food-card_bottom-section .food-card_price {
+.food-card .food-card_content .food-card_bottom-section {
   font-size: 28px;
   font-weight: 500;
   color: #f47a00;
@@ -171,6 +176,10 @@ a {
   border-width: 3px;
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+
+.food-card_price {
+  font-size: 24px;
 }
 
 @media (min-width: 992px) {
