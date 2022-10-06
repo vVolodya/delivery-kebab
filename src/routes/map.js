@@ -1,12 +1,9 @@
 const router = require('express').Router();
 
-const { renderMap } = require('../controllers/mapContollers');
-
-router.get('/', renderMap);
-
 router.post('/', (req, res) => {
-  const { list } = req.body;
-  res.send({ data: 'done' });
+  const { resultDistance } = req.body;
+  req.session.distanceData = resultDistance;
+  res.status(200).end();
 });
 
 module.exports = router;

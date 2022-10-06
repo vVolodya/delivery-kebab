@@ -59,7 +59,7 @@ module.exports = function Home({ user, products }) {
                             ? (
                               <>
                                 <a href={`/order/info/${product.id}`} className="edit-link text-reset text-decoration-none"><button className="btn btn-warning" data-productid={product.id} data-userid={user.id} type="submit">More</button></a>
-                                <button className="btn btn-primary" data-productid={product.id} data-userid={user.id} type="submit">Buy</button>
+                                <button className="buyBtn btn btn-primary" data-productid={product.id} data-userid={user.id} type="submit">Buy</button>
                               </>
                             )
                             : null }

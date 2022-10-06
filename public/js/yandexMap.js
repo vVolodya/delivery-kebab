@@ -4,18 +4,9 @@ async function getAllDistance() {
   const fetchRes = await fetch('/finddadress');
   const result = await fetchRes.json();
 
-  const { addressCustomer } = result;
-  const arrProduct = result.product;
+  const { customerAddress, productAddress } = result;
 
-  const arrToSend = [];
-
-  arrProduct.forEach((el) => {
-    const locationCiruer = el.address;
-    const { id } = el;
-    getDistance(addressCustomer, locationCiruer, id);
-  });
-
-  function getDistance(addressCustomer, locationCiruer, id) {
+  function getDistance(addressCustomer, locationCiruer) {
     ymaps.ready(() => {
       // Дождёмся загрузки API и готовности DOM.
 
@@ -67,9 +58,17 @@ async function getAllDistance() {
 
             const distance = activeRoute.properties.get('distance');
             const time = activeRoute.properties.get('duration');
-            const resultDistance = { id, distance, time };
-            arrToSend.push(resultDistance);
-            // document.cookie = `${id} = ${distance}`;
+            const resultDistance = { distance, time };
+
+            console.log(resultDistance);
+
+            await fetch('/map', {
+              method: 'POST',
+              headers: {
+                'Content-type': 'application/json',
+              },
+              body: JSON.stringify({ resultDistance }),
+            });
           }
         });
       }, (err) => {
@@ -78,13 +77,7 @@ async function getAllDistance() {
     });
   }
 
-  await fetch('/map', {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify({ list: arrToSend }),
-  });
+  getDistance(customerAddress, productAddress);
 }
 
 getAllDistance();
