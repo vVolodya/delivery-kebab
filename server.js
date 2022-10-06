@@ -56,7 +56,7 @@ app.use('/', courierRouter);
 app.use('/product', productsRouter);
 app.use('/map', mapRouter);
 app.use('/orders', orderRouter);
-app.use('/order/', orderInfoRouter);
+app.use('/order', orderInfoRouter);
 app.use('/finddadress', findAddressRouter);
 
 app.use(errorHandlers.notFound);

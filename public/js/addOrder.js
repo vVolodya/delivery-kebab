@@ -1,7 +1,7 @@
 const productContainer = document.querySelector('.productContainer');
 
 productContainer.addEventListener('click', async (e) => {
-  if (e.target.tagName === 'BUTTON') {
+  if (e.target.tagName === 'BUTTON' && e.target.classList.contains('buyBtn')) {
     const { userid, productid } = e.target.dataset;
     const body = JSON.stringify({ userid, productid });
     const options = {
