@@ -7,7 +7,7 @@ async function getAllDistance() {
   const { addressCustomer } = result;
   const arrProduct = result.product;
 
-  arrProduct.map((el) => {
+  arrProduct.forEach((el) => {
     const locationCiruer = el.address;
     const { id } = el;
 

@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 
-let url = 'https://www.rasstoyanie.com/route.json?stops=Vladivostok|Tokyo'
+let url = 'https://www.rasstoyanie.com/route.json?stops=Vladivostok|Tokyo';
 
 const getDistance = async (url) => {
     let response = await fetch(url);
@@ -23,4 +23,4 @@ const getDistance = async (url) => {
   console.log(getDistance(url));
 
 
-module.exports = getDistance
+// module.exports = getDistance;
