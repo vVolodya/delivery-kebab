@@ -26,6 +26,7 @@
     "@babel/register": "^7.18.9",
     "bcrypt": "^5.0.1",
     "cookies-js": "^1.2.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "express-fileupload": "^1.4.0",
