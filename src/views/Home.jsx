@@ -13,8 +13,9 @@ module.exports = function Home({ user, products }) {
 
         <section className="main-content">
 
-          <div className="d-flex flex-column justify-conten-center align-items-center w-50 mx-auto ">
+          <div className="d-flex flex-column justify-conten-center align-items-center w-50 mx-auto mb-5">
             <h1 className="mx-auto">All Kebabs</h1>
+            <div className="liveAlertPlaceholder d-flex flex-direction-column w-300" />
           </div>
 
           <div className="container">
@@ -58,10 +59,7 @@ module.exports = function Home({ user, products }) {
                             { (user && user.role) === 'customer'
                               ? (
                                 <>
-
-                                 
                                   <a href={`/order/info/${product.id}`} className="infoLink btn btn-warning">More</a>
-
                                   <button className="buyBtn btn btn-primary" data-productid={product.id} data-userid={user.id} type="submit">Buy</button>
                                 </>
                               )
@@ -79,7 +77,6 @@ module.exports = function Home({ user, products }) {
                 </div>
               )}
             </div>
-            <div className="liveAlertPlaceholder d-flex flex-direction-column w-300" />
           </div>
         </section>
       </div>
