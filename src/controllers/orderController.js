@@ -23,8 +23,6 @@ exports.renderYourOrdersPage = async (req, res) => {
     include: [{ model: Product }],
   });
 
-  console.log(orders);
-
   renderTemplate(OrderCustomer, { user, orders }, res);
 };
 
@@ -77,7 +75,7 @@ exports.addNewOrder = async (req, res) => {
 
   transporter.sendMail(mailData, (error) => {
     if (error) throw createError(500, error.message);
-    console.log('email has been sent');
+    console.log('<=====> EMAIL HAS BEEN SENT <=====>');
     res.status(200).end();
   });
 };
