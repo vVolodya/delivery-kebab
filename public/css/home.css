@@ -22,3 +22,12 @@
            opacity: 1;
     } /* Конечная точка */
   }
+
+.main-content{
+  position: relative;
+}
+
+.liveAlertPlaceholder {
+  position: absolute;
+  z-index: 1;
+}
