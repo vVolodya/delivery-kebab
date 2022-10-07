@@ -77,7 +77,6 @@ module.exports = function Home({ user, products }) {
                 <iframe title="Sorry" src="https://giphy.com/embed/d2lcHJTG5Tscg" style={{ width: 480, height: 384, frameBorder: 0 }} frameBorder="0" className="giphy-embed" allowFullScreen />
               </div>
             )}
-
             </div>
           </div>
         </section>
