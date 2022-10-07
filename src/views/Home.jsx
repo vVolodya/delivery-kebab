@@ -13,8 +13,8 @@ module.exports = function Home({ user, products }) {
 
         <section className="main-content">
 
-          <div className="d-flex flex-column justify-conten-center align-items-center w-50 mx-auto mt-5">
-            <h1 className="mx-auto mt-4">All Kebabs</h1>
+          <div className="d-flex flex-column justify-conten-center align-items-center w-50 mx-auto ">
+            <h1 className="mx-auto">All Kebabs</h1>
           </div>
           <div className="container">
             <div className="row productContainer">
@@ -47,36 +47,33 @@ module.exports = function Home({ user, products }) {
                         </div>
                         <div className="food-card_bottom-section">
                           <hr />
-                          <div className="space-between">
-                            <div className="food-card_price">
-                              <span><s>{product.price}</s></span>
-                            </div>
+                          <div className="space-between align-items-center">
                             <div className="food-card_price">
                               <span>
                                 {`${product.price - (product.price * (product.discount / 100))} RUB`}
                               </span>
                             </div>
 
-                          { (user && user.role) === 'customer'
-                            ? (
-                              <>
-                                <a href={`/order/info/${product.id}`} className="edit-link text-reset text-decoration-none"><button className="btn btn-warning" data-productid={product.id} data-userid={user.id} type="submit">More</button></a>
-                                <button className="buyBtn btn btn-primary" data-productid={product.id} data-userid={user.id} type="submit">Buy</button>
-                              </>
-                            )
-                            : null }
+                            { (user && user.role) === 'customer'
+                              ? (
+                                <>
+                                  <a href={`/order/info/${product.id}`} className="infoLink btn btn-warning">More</a>
+                                  <button className="buyBtn btn btn-primary" data-productid={product.id} data-userid={user.id} type="submit">Buy</button>
+                                </>
+                              )
+                              : null }
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
+                ))
+              ) : (
+                <div className="d-flex flex-column align-items-center justify-content-center w-50 mx-auto">
+                  <h2>No kebabs yet :(</h2>
+                  <iframe title="Sorry" src="https://giphy.com/embed/d2lcHJTG5Tscg" style={{ width: 480, height: 384, frameBorder: 0 }} frameBorder="0" className="giphy-embed" allowFullScreen />
                 </div>
-              ))
-            ) : (
-              <div className="d-flex flex-column align-items-center justify-content-center w-50 mx-auto">
-                <h2>No kebabs yet :(</h2>
-                <iframe title="Sorry" src="https://giphy.com/embed/d2lcHJTG5Tscg" style={{ width: 480, height: 384, frameBorder: 0 }} frameBorder="0" className="giphy-embed" allowFullScreen />
-              </div>
-            )}
+              )}
             </div>
           </div>
         </section>
