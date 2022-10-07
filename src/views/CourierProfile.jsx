@@ -38,7 +38,7 @@ module.exports = function CourierProfile({ user, products }) {
                       </div>
                       <div className="food-card_bottom-section">
                         <hr />
-                        <div className="space-between">
+                        <div className="space-between align-items-center">
                           <div className="food-card_price">
                             <span><s>{product.price}</s></span>
                           </div>
@@ -50,7 +50,7 @@ module.exports = function CourierProfile({ user, products }) {
                           { product.isCompleted ? null
                             : (
                               <>
-                                <a href={`/product/${product.id}`} className="edit-link text-reset text-decoration-none btn btn-primary">Edit</a>
+                                <a href={`/product/${product.id}`} className="btn btn-primary">Edit</a>
                                 <button className="deleteProductBtn btn btn-danger" type="submit">Delete</button>
                               </>
                             )}

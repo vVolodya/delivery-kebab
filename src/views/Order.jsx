@@ -63,12 +63,12 @@ module.exports = function Order({ user, product, distanceData }) {
 
       { !distanceData ? (
         <div className="d-flex flex-column align-items-center w-50 mx-auto mt-5">
-          <h2 className="text-danger">You can click this button and get SUPER INFO (100$)</h2>
-          <button type="button" className="reloadBtn btn btn-warning">CLICK!</button>
+          <h2 className="text-primary">You can click this button and get SUPER INFO (100$)</h2>
+          <button type="button" className="reloadBtn btn btn-warning mt-2">CLICK!</button>
         </div>
       ) : null }
 
-      <div className="w-25 mx-auto mt-5 mb-5">
+      <div className="w-25 mx-auto mt-5 mb-3">
         { distanceData ? (
           <ul className="list-group">
             <li className="list-group-item h4">

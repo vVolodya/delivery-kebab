@@ -31,13 +31,13 @@ module.exports = function OrderCustomer({ user, orders }) {
                     <div className="food-card_content">
                       <div className="d-flex flex-column justify-content-center align-items-center food-card_title-section">
                         <p className="food-card_title">{order['Product.name']}</p>
-                        <p className="text-danger h5">COURIER WILL CONTACT YOU SOON</p>
-                        <p className="text-danger h5">CHECK YOUR EMAIL</p>
-                        <p className="text-danger h5">WAIT FOR DELIVERY</p>
+                        <p className="text-primary h5">Courier will contact you soon</p>
+                        <p className="text-primary h5">Check your Email</p>
+                        <p className="text-primary h5">Wait for delivery</p>
                       </div>
                       <div className="food-card_bottom-section">
                         <hr />
-                        <div className="space-between">
+                        <div className="space-between align-items-center">
                           <div className="food-card_price">
                             <span>
                               {`${order['Product.price'] - (order['Product.price'] * (order['Product.discount'] / 100))} RUB`}
