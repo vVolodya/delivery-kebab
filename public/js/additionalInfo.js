@@ -20,6 +20,6 @@ $buyBtn.addEventListener('click', async (e) => {
   const res = await fetch('/orders', options);
 
   if (res.ok) {
-    window.location.replace('/');
+    window.location.replace('/orders');
   }
 });

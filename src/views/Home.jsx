@@ -70,9 +70,14 @@ module.exports = function Home({ user, products }) {
                       </div>
                     </div>
                   </div>
-                ))
-              ) : <div className="d-flex justify-content-center w-50 mx-auto"><h2>No kebabs yet :(</h2></div> }
-
+                </div>
+              ))
+            ) : (
+              <div className="d-flex flex-column align-items-center justify-content-center w-50 mx-auto">
+                <h2>No kebabs yet :(</h2>
+                <iframe title="Sorry" src="https://giphy.com/embed/d2lcHJTG5Tscg" style={{ width: 480, height: 384, frameBorder: 0 }} frameBorder="0" className="giphy-embed" allowFullScreen />
+              </div>
+            )}
             </div>
           </div>
         </section>

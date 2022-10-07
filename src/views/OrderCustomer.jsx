@@ -31,11 +31,9 @@ module.exports = function OrderCustomer({ user, orders }) {
                     <div className="food-card_content">
                       <div className="d-flex flex-column justify-content-center align-items-center food-card_title-section">
                         <p className="food-card_title">{order['Product.name']}</p>
-                        <p>
-                          Address -
-                          {' '}
-                          {order['Product.address']}
-                        </p>
+                        <p className="text-danger h5">COURIER WILL CONTACT YOU SOON</p>
+                        <p className="text-danger h5">CHECK YOUR EMAIL</p>
+                        <p className="text-danger h5">WAIT FOR DELIVERY</p>
                       </div>
                       <div className="food-card_bottom-section">
                         <hr />
@@ -46,7 +44,7 @@ module.exports = function OrderCustomer({ user, orders }) {
                             </span>
                           </div>
                           <button data-orderId={order.id} data-productId={order['Product.id']} className="deliveredBtn btn btn-success" type="submit">Delivered</button>
-                          <button data-orderId={order.id} data-productId={order['Product.id']} className="removeOrderBtn btn btn-danger" type="submit">Delete</button>
+                          <button data-orderId={order.id} data-productId={order['Product.id']} className="removeOrderBtn btn btn-danger" type="submit">Refuse</button>
                         </div>
                       </div>
                     </div>
