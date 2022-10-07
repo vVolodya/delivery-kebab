@@ -4,6 +4,8 @@ const Layout = require('./Layout');
 module.exports = function Login({ messages }) {
   return (
     <Layout>
+      <link rel="stylesheet" href="/css/login.css" />
+
       <div className="form p-5">
         <h1>Login</h1>
         {messages
@@ -29,6 +31,9 @@ module.exports = function Login({ messages }) {
           </div>
           <button type="submit" className="btn btn-primary">Login</button>
         </form>
+      </div>
+      <div className="pic_login">
+        <img style={{ width: '400px', height: '300px' }} src="https://thumbs.dreamstime.com/b/cartoon-running-chicken-doodle-white-background-vector-illustration-114443896.jpg" alt="Soldatkin" />
       </div>
     </Layout>
   );

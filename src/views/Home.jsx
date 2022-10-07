@@ -11,12 +11,11 @@ module.exports = function Home({ user, products }) {
       <div className="pic mr-10">
         {/* <img src="https://media.baamboozle.com/uploads/images/259248/1616021001_154323.jpeg" style={{ width: '320px', height: '240px' }} alt="Soldatkin" /> */}
 
-
         <section className="main-content">
 
-        <div className="d-flex flex-column justify-conten-center align-items-center w-50 mx-auto mt-5">
-          <h1 className="mx-auto mt-4">All Kebabs</h1>
-        </div>
+          <div className="d-flex flex-column justify-conten-center align-items-center w-50 mx-auto mt-5">
+            <h1 className="mx-auto mt-4">All Kebabs</h1>
+          </div>
           <div className="container">
             <div className="row productContainer">
 
