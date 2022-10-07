@@ -1,33 +1,42 @@
 .pic {
-    /* margin-right: 50px; */
-    /* height: 500px;
+  /* margin-right: 50px; */
+  /* height: 500px;
     width: 300px;    */
-    opacity: 50;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    animation-duration: 2.5s; /* Скорость проигрывания - время завершения одного цикла */
-    animation-name: slidein;
-    animation-iteration-count: 1; /* Число итераций. В данном случае - бесконечно */
-    animation-delay: 0s; /* Стоит 2 сек. после загрузки */
-  }
-  
-  @keyframes slidein {  
-     0%  { width: 35%; 
-           opacity: 0;
-    
-    } /* Начальная точка */
-    
-     100% { width: 100%; 
-           opacity: 1;
-    } /* Конечная точка */
-  }
+  opacity: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  animation-duration: 2.5s; /* Скорость проигрывания - время завершения одного цикла */
+  animation-name: slidein;
+  animation-iteration-count: 1; /* Число итераций. В данном случае - бесконечно */
+  animation-delay: 0s; /* Стоит 2 сек. после загрузки */
+}
 
-.main-content{
+@keyframes slidein {
+  0% {
+    width: 35%;
+    opacity: 0;
+  } /* Начальная точка */
+
+  100% {
+    width: 100%;
+    opacity: 1;
+  } /* Конечная точка */
+}
+
+.main-content {
   position: relative;
 }
 
 .liveAlertPlaceholder {
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 50%;
+  margin-bottom: 20px;
   position: absolute;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: start;
 }

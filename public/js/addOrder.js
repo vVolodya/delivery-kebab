@@ -4,7 +4,7 @@ const alertPlaceholder = document.querySelector('.liveAlertPlaceholder');
 const alert = (message, type) => {
   const wrapper = document.createElement('div');
   wrapper.innerHTML = [
-    `<div class="alert alert-${type} alert-dismissible" fade show role="alert">`,
+    `<div class="popup alert alert-${type} alert-dismissible" fade show role="alert">`,
     `   <div>${message}</div>`,
     '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>',
     '</div>',
@@ -36,11 +36,10 @@ productContainer.addEventListener('click', async (e) => {
     if (res.ok) {
       $productCard.remove();
     }
+    alert('Kebab added to your order', 'success');
+
+    setTimeout(() => {
+      bootstrap.Alert.getOrCreateInstance(document.querySelector('.alert')).close();
+    }, 2500);
   }
-
-  alert('Kebab added to your order', 'success');
-
-  setTimeout(() => {
-    bootstrap.Alert.getOrCreateInstance(document.querySelector('.alert')).close();
-  }, 2500);
 });
