@@ -5,6 +5,11 @@ body {
   font-family: "roboto", sans-serif;
 }
 
+.addInfoContainer {
+  width: 340px;
+  margin-left: 50px;
+}
+
 .main-content {
   padding-top: 100px;
   padding-bottom: 100px;
@@ -140,7 +145,7 @@ a {
   font-size: 13px;
 }
 
-.food-card .food-card_content .food-card_bottom-section .food-card_price {
+.food-card .food-card_content .food-card_bottom-section {
   font-size: 28px;
   font-weight: 500;
   color: #f47a00;
@@ -173,6 +178,10 @@ a {
   box-shadow: none;
 }
 
+.food-card_price {
+  font-size: 24px;
+}
+
 @media (min-width: 992px) {
   .food-card--vertical {
     display: -webkit-box;
@@ -192,4 +201,17 @@ a {
 
 .error-message {
   display: block;
+}
+
+.form {
+  width: 800px;
+  margin: 200px auto 0 auto;
+  background: white;
+  border-radius: 10px;
+  background-image: url('/images/fried-chicken.png');
+  background-size: 200px 200px;
+  background-repeat: no-repeat;
+  background-position: 650px -50px;
+  border: solid 1px #DDDDDD;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
 }

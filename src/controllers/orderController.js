@@ -68,10 +68,10 @@ exports.addNewOrder = async (req, res) => {
     from: 'skinner.vova@gmail.com',
     to: `${courier.email}`,
     subject: 'You have new order',
-    text: `
-    Order: ${product.name}
-    Address: ${customer.address}
-    Customer Email: ${customer.email}
+    html: `
+    <h2>Order: ${product.name}</h2>
+    <h2>Address: ${customer.address}</h2>
+    <h2>Customer Email: ${customer.email}</h2>
     `,
   };
 
@@ -117,8 +117,8 @@ exports.removeOrder = async (req, res) => {
     from: 'skinner.vova@gmail.com',
     to: `${courier.email}`,
     subject: 'Order has been cancelled',
-    text: `
-    Order: ${product.name} has been cancelled.
+    html: `
+    <h2>Order: ${product.name} has been cancelled</h2>
     `,
   };
 
