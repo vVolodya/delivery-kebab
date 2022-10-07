@@ -18,10 +18,12 @@ module.exports = function Layout({ user, children }) {
           crossOrigin="anonymous"
         />
         <link rel="stylesheet" href="/css/application.css" />
+        <link rel="stylesheet" href="/css/addProductForm.css" />
+        <link rel="stylesheet" type="text/css" href="/css/footer.css" />
+        <link rel="stylesheet" type="text/css" href="/css/nunito-font.css" />
       </head>
       <body>
         <header>
-
           <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <div className="container-fluid">
               <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
@@ -76,9 +78,20 @@ module.exports = function Layout({ user, children }) {
               </div>
             </div>
           </nav>
-
         </header>
+
         <main>{children}</main>
+
+        <footer>
+          <ul className="footer-list">
+            <li className="footer-list__item"><a className="item-anchor" href="https://github.com/peezlepass">Ellina</a></li>
+            <li className="footer-list__item"><a className="item-anchor" href="https://github.com/vVolodya">Volodya</a></li>
+            <li className="footer-list__item"><a className="item-anchor" href="https://github.com/DanilaTru">Danila</a></li>
+            <li className="footer-list__item"><a className="item-anchor" href="https://github.com/Kasabonita">Alexander</a></li>
+            <li><p>👋</p></li>
+          </ul>
+        </footer>
+
         <script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
