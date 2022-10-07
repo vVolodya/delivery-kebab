@@ -33,8 +33,8 @@ module.exports = function CourierProfile({ user, products }) {
                           {DateTime.fromISO(product.createdAt.toISOString()).toFormat('ff')}
                         </p>
                         { product.isCompleted
-                          ? <p className="text-success">Bought</p>
-                          : <p className="text-warning">Pending</p> }
+                          ? <p className="text-success h5">Ordered</p>
+                          : <p className="text-warning h5">Pending</p> }
                       </div>
                       <div className="food-card_bottom-section">
                         <hr />
@@ -60,8 +60,12 @@ module.exports = function CourierProfile({ user, products }) {
                   </div>
                 </div>
               ))
-            ) : <div className="d-flex justify-content-center w-50 mx-auto"><h2>No kebabs yet :(</h2></div> }
-
+            ) : (
+              <div className="d-flex flex-column align-items-center justify-content-center w-50 mx-auto">
+                <h2>No kebabs yet :(</h2>
+                <iframe title="Sorry" src="https://giphy.com/embed/3oz8xA07HKwLlpPUkM" style={{ width: 480, height: 384, frameBorder: 0 }} frameBorder="0" className="giphy-embed" allowFullScreen />
+              </div>
+            )}
           </div>
         </div>
       </section>
