@@ -5,3 +5,6 @@ Project-based application allowing food couriers to still sell the food with dis
 ## Stack of used technologies:
 
 [![Stack](https://skillicons.dev/icons?i=js,postgres,express,nodejs&perline=16)](https://skillicons.dev)
+
+- Frontend: JSX-components, Bootstrap
+- Backend: Node.js, Express, PostgreSQL, Sequelize ORM, Bcrypt, Nodemailer, Yandex Maps API
