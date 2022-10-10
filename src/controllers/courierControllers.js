@@ -19,6 +19,7 @@ exports.renderProfile = async (req, res) => {
     where: {
       courier_id: user.id,
     },
+    order: [['id', 'DESC']],
   });
 
   renderTemplate(CourierProfile, { user, products }, res);

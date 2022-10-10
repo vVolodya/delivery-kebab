@@ -21,6 +21,7 @@ exports.renderYourOrdersPage = async (req, res) => {
       user_id: user.id,
     },
     include: [{ model: Product }],
+    order: [['id', 'DESC']],
   });
 
   renderTemplate(OrderCustomer, { user, orders }, res);

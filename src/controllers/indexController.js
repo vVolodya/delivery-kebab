@@ -17,6 +17,7 @@ exports.findUserRenderHome = async (req, res) => {
     },
     raw: true,
     include: [{ model: User }],
+    order: [['id', 'DESC']],
   });
 
   renderTemplate(Home, { user, products }, res);
