@@ -58,13 +58,13 @@ exports.addNewOrder = async (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'skinner.vova@gmail.com',
-      pass: 'czevnletifzmoyqm',
+      user: '',
+      pass: '',
     },
   });
 
   const mailData = {
-    from: 'skinner.vova@gmail.com',
+    from: '',
     to: `${courier.email}`,
     subject: 'You have new order',
     html: `
@@ -107,13 +107,13 @@ exports.removeOrder = async (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'skinner.vova@gmail.com',
-      pass: 'czevnletifzmoyqm',
+      user: '',
+      pass: '',
     },
   });
 
   const mailData = {
-    from: 'skinner.vova@gmail.com',
+    from: '',
     to: `${courier.email}`,
     subject: 'Order has been cancelled',
     html: `
